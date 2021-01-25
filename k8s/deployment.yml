@@ -56,7 +56,6 @@ spec:
           mountPath: "/user_data/"
         args:
           - "trade"
-          - "--dry-run"
           - "--userdir"
           - "/user_data"
           - "--logfile"
@@ -70,4 +69,4 @@ spec:
           - "--strategy"
           - "ReinforcedAverageStrategy"
           - "--db-url"
-          - "sqlite:///tradesv3.dry_run.sqlite"
+          - "sqlite:///tradesv3.sqlite"
