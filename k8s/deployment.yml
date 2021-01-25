@@ -1,0 +1,73 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: freqtrade-deploy
+  namespace: freqtrade
+  labels:
+    app: freqtrade-bot
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: freqtrade-bot
+  template:
+    metadata:
+      labels:
+        app: freqtrade-bot
+    spec:
+      volumes:
+      - name: mypd
+        persistentVolumeClaim:
+          claimName: tradestore
+      initContainers:
+      - name: init-freqtrade
+        image: alpine
+        volumeMounts:
+        - name: mypd
+          mountPath: "/user_data/"
+        env:
+        - name: BINANCE_EXCHANGE_KEY
+          valueFrom:
+            secretKeyRef:
+              name: freqtrade-auth
+              key: binance-exchange-key
+        - name: BINANCE_EXCHANGE_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: freqtrade-auth
+              key: binance-exchange-secret
+        - name: TELEGRAM_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: freqtrade-auth
+              key: telegram-token
+        - name: TELEGRAM_CHAT_ID
+          valueFrom:
+            secretKeyRef:
+              name: freqtrade-auth
+              key: telegram-chat-id
+        command: ["sh", "-c", "apk add --no-cache git; cd user_data; rm -rf freqtrade-prod; git clone https://github.com/gammons/freqtrade-prod.git; cd freqtrade-prod && ./generate_secrets"]
+
+      containers:
+      - name: freqtrade-bot
+        image: gammons1/freqtrade:stable
+        volumeMounts:
+        - name: mypd
+          mountPath: "/user_data/"
+        args:
+          - "trade"
+          - "--dry-run"
+          - "--userdir"
+          - "/user_data"
+          - "--logfile"
+          - "/user_data/freqtrade.log"
+          - "--config"
+          - "/user_data/freqtrade-prod/config.json"
+          - "--config"
+          - "/user_data/freqtrade-prod/config.secrets.json"
+          - "--strategy-path"
+          - "/user_data/freqtrade-prod"
+          - "--strategy"
+          - "ReinforcedAverageStrategy"
+          - "--db-url"
+          - "sqlite:///tradesv3.dry_run.sqlite"
