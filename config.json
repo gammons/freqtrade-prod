@@ -1,6 +1,6 @@
 
 {
-  "db_url": "sqlite:///user_data/db/tradesv3.sqlite",
+  "db_url": "sqlite:///user_data/tradesv3.sqlite",
   "max_open_trades": 10,
   "stake_currency": "USD",
   "_stake_amount": 0.004,
