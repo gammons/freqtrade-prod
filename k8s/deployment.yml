@@ -69,4 +69,4 @@ spec:
           - "--strategy"
           - "ReinforcedAverageStrategy"
           - "--db-url"
-          - "sqlite:///tradesv3.sqlite"
+          - "sqlite:////user_data/tradesv3.sqlite"
