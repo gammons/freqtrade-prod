@@ -67,6 +67,6 @@ spec:
           - "--strategy-path"
           - "/user_data/freqtrade-prod"
           - "--strategy"
-          - "ReinforcedAverageStrategy"
+          - "CombinedBinHAndCluc"
           - "--db-url"
           - "sqlite:////user_data/tradesv3.sqlite"
