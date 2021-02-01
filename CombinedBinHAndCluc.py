@@ -28,7 +28,7 @@ class CombinedBinHAndCluc(IStrategy):
 
     use_sell_signal = True
     sell_profit_only = True
-    ignore_roi_if_buy_signal = False
+    ignore_roi_if_buy_signal = True
 
     def populate_indicators(self, dataframe: DataFrame, metadata: dict) -> DataFrame:
         # strategy BinHV45
