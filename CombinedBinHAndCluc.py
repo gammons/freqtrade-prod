@@ -21,12 +21,12 @@ class CombinedBinHAndCluc(IStrategy):
     # - if the market is constantly green(like in JAN 2018) the best performance is reached with
     #   "max_open_trades" = 2 and minimal_roi = 0.01
     minimal_roi = {
-        "0": 0.05
+        "0": 0.07
     }
     stoploss = -0.05
     timeframe = '5m'
 
-    use_sell_signal = True
+    use_sell_signal = False
     sell_profit_only = True
     ignore_roi_if_buy_signal = True
 
