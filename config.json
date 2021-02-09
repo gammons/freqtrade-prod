@@ -48,10 +48,10 @@
       "OMG/USD",
       "EOS/USD",
       "IOTA/USD",
-      "NEO/USD",
-      "DOGE/USD"
+      "NEO/USD"
     ],
     "pair_blacklist": [
+      "DOGE/USD",
       "BNB/BTC",
       "BNB/BUSD",
       "BNB/ETH",
