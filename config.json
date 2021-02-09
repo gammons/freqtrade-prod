@@ -37,18 +37,23 @@
       "rateLimit": 200
     },
     "pair_whitelist": [
-      "BTC/USD",
-      "ETH/USD",
-      "LINK/USD",
       "ADA/USD",
-      "LTC/USD",
-      "UNI/USD",
       "ALGO/USD",
-      "MKR/USD",
-      "OMG/USD",
+      "BTC/USD",
       "EOS/USD",
+      "ETH/USD",
+      "EGLD/USD",
       "IOTA/USD",
-      "NEO/USD"
+      "LINK/USD",
+      "LTC/USD",
+      "MKR/USD",
+      "NEO/USD",
+      "OMG/USD",
+      "ONE/USD",
+      "UNI/USD",
+      "VET/USD",
+      "XLM/USD",
+      "ZIL/USD"
     ],
     "pair_blacklist": [
       "DOGE/USD",
